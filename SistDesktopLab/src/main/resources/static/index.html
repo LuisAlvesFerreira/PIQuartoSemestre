@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171512">
+  <title>Laboratório das Artes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Ir para o conteúdo principal</a>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" data-view="inicio" aria-label="Laboratório das Artes">
+      <span class="brand-mark">LA</span>
+      <span>
+        <strong>Laboratório</strong>
+        <small>das Artes</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <button class="nav-item active" data-view="inicio"><i data-lucide="layout-dashboard"></i><span>Visão geral</span></button>
+      <div class="nav-group" aria-label="Livros">
+        <div class="nav-group-title"><i data-lucide="book-open"></i><span>Livros</span></div>
+        <button class="nav-item nav-subitem" data-view="livro-fisico"><i data-lucide="book-marked"></i><span>Livro físico</span></button>
+        <button class="nav-item nav-subitem" data-view="livro-digital"><i data-lucide="tablet-smartphone"></i><span>Livro digital</span></button>
+      </div>
+      <div class="nav-group" aria-label="Monumentos">
+        <div class="nav-group-title"><i data-lucide="landmark"></i><span>Monumentos</span></div>
+        <button class="nav-item nav-subitem" data-view="patrimonio-material"><i data-lucide="brick-wall"></i><span>Patrimônio material</span></button>
+        <button class="nav-item nav-subitem" data-view="patrimonio-imaterial"><i data-lucide="sparkles"></i><span>Patrimônio imaterial</span></button>
+      </div>
+      <button class="nav-item" data-view="estatisticas"><i data-lucide="chart-no-axes-combined"></i><span>Estatísticas</span></button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <button class="import-shortcut" data-open-import>
+        <i data-lucide="file-up"></i>
+        <span><strong>Importar planilha</strong><small>Excel ou CSV</small></span>
+      </button>
+      <button class="profile" type="button">
+        <span class="avatar">AR</span>
+        <span><strong>Equipe artística</strong><small>Administrador</small></span>
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main" id="mainContent">
+    <header class="topbar">
+      <button class="icon-button menu-button" id="menuButton" aria-label="Abrir menu"><i data-lucide="menu"></i></button>
+      <div class="topbar-copy">
+        <p id="pageEyebrow">ACERVO CULTURAL</p>
+        <h1 id="pageTitle">Visão geral</h1>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-button" id="searchButton" aria-label="Pesquisar"><i data-lucide="search"></i></button>
+        <button class="secondary-button template-button" data-open-templates><i data-lucide="file-spreadsheet"></i><span>Baixar modelo</span></button>
+        <button class="primary-button" data-open-import><i data-lucide="upload"></i><span>Importar dados</span></button>
+      </div>
+    </header>
+
+    <section class="view active" id="view-inicio">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="kicker"><span></span> Memória viva</span>
+          <h2>Conhecer para preservar.</h2>
+          <p>Uma visão sensível e organizada sobre os livros, lugares e expressões culturais que fazem parte da nossa história.</p>
+          <button class="light-button" data-view-target="livro-fisico">Explorar acervo <i data-lucide="arrow-up-right"></i></button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="arch arch-one"></div>
+          <div class="arch arch-two"></div>
+          <div class="organic-line"></div>
+        </div>
+      </div>
+
+      <div class="metric-grid" id="dashboardMetrics"></div>
+
+      <div class="dashboard-grid">
+        <article class="panel distribution-panel">
+          <div class="panel-heading">
+            <div><p>ACERVO</p><h3>Distribuição dos registros</h3></div>
+            <button class="text-button" data-view-target="estatisticas">Ver análise <i data-lucide="arrow-right"></i></button>
+          </div>
+          <div class="bar-chart" id="distributionChart"></div>
+        </article>
+
+        <article class="panel recent-panel">
+          <div class="panel-heading">
+            <div><p>ATIVIDADE</p><h3>Cadastros recentes</h3></div>
+            <button class="icon-button small" aria-label="Mais opções"><i data-lucide="ellipsis"></i></button>
+          </div>
+          <div class="recent-list" id="recentList"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="view-livro-fisico">
+      <div class="section-toolbar">
+        <div class="search-field"><i data-lucide="search"></i><input id="livrosFisicosSearch" type="search" placeholder="Buscar livro físico"></div>
+        <button class="primary-button" data-add="livro-fisico"><i data-lucide="plus"></i><span>Novo livro físico</span></button>
+      </div>
+      <div class="data-grid" id="livrosFisicosGrid"></div>
+    </section>
+
+    <section class="view" id="view-livro-digital">
+      <div class="section-toolbar">
+        <div class="search-field"><i data-lucide="search"></i><input id="livrosDigitaisSearch" type="search" placeholder="Buscar livro digital"></div>
+        <button class="primary-button" data-add="livro-digital"><i data-lucide="plus"></i><span>Novo livro digital</span></button>
+      </div>
+      <div class="data-grid" id="livrosDigitaisGrid"></div>
+    </section>
+
+    <section class="view" id="view-patrimonio-material">
+      <div class="section-toolbar">
+        <div class="search-field"><i data-lucide="search"></i><input id="materialSearch" type="search" placeholder="Buscar patrimônio material"></div>
+        <button class="primary-button" data-add="patrimonio-material"><i data-lucide="plus"></i><span>Novo patrimônio</span></button>
+      </div>
+      <div class="data-grid" id="materialGrid"></div>
+    </section>
+
+    <section class="view" id="view-patrimonio-imaterial">
+      <div class="section-toolbar">
+        <div class="search-field"><i data-lucide="search"></i><input id="imaterialSearch" type="search" placeholder="Buscar manifestação"></div>
+        <button class="primary-button" data-add="patrimonio-imaterial"><i data-lucide="plus"></i><span>Nova manifestação</span></button>
+      </div>
+      <div class="data-grid" id="imaterialGrid"></div>
+    </section>
+
+    <section class="view" id="view-estatisticas">
+      <div class="stats-header">
+        <div>
+          <span class="kicker"><span></span> Estatística aplicada</span>
+          <h2>Dados que contam histórias</h2>
+        </div>
+        <label class="select-label">Conjunto de dados
+          <select id="statsDataset">
+            <option value="livros">Livros</option>
+            <option value="monumentos">Monumentos</option>
+          </select>
+        </label>
+      </div>
+      <div class="stats-controls" id="statsFields"></div>
+      <div class="stats-grid" id="statsGrid"></div>
+      <article class="panel insight-panel">
+        <div class="panel-heading"><div><p>LEITURA DOS DADOS</p><h3>Resumo automático</h3></div></div>
+        <p id="statsInsight"></p>
+      </article>
+    </section>
+
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-header">
+        <div><p id="modalEyebrow">CADASTRO</p><h2 id="modalTitle">Novo registro</h2></div>
+        <button class="icon-button" data-close-modal aria-label="Fechar"><i data-lucide="x"></i></button>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+      <footer class="modal-footer">
+        <button class="danger-button" id="modalDelete" hidden>Excluir</button>
+        <button class="secondary-button" data-close-modal>Cancelar</button>
+        <button class="primary-button" id="modalSubmit"><i data-lucide="check"></i><span>Salvar</span></button>
+      </footer>
+    </section>
+  </div>
+
+  <button class="accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityPanel" aria-label="Abrir recursos de acessibilidade">
+    <i data-lucide="accessibility"></i>
+  </button>
+
+  <aside class="accessibility-panel" id="accessibilityPanel" aria-label="Recursos de acessibilidade" hidden>
+    <header>
+      <div>
+        <p>ACESSIBILIDADE</p>
+        <h2>Mais conforto visual</h2>
+      </div>
+      <button class="icon-button" id="accessibilityClose" type="button" aria-label="Fechar recursos de acessibilidade">
+        <i data-lucide="x"></i>
+      </button>
+    </header>
+    <div class="accessibility-options">
+      <button class="accessibility-option" id="narrationButton" type="button" aria-pressed="false">
+        <span class="option-icon"><i data-lucide="volume-2"></i></span>
+        <span><strong>Ler conteúdo</strong><small>Narração da tela atual</small></span>
+      </button>
+      <button class="accessibility-option" id="contrastButton" type="button" aria-pressed="false">
+        <span class="option-icon"><i data-lucide="contrast"></i></span>
+        <span><strong>Alto contraste</strong><small>Cores com maior diferenciação</small></span>
+      </button>
+      <button class="accessibility-option" id="textButton" type="button" aria-pressed="false">
+        <span class="option-icon"><i data-lucide="case-sensitive"></i></span>
+        <span><strong>Aumentar texto</strong><small>Amplia a leitura da página</small></span>
+      </button>
+      <button class="accessibility-option" id="motionButton" type="button" aria-pressed="false">
+        <span class="option-icon"><i data-lucide="pause"></i></span>
+        <span><strong>Reduzir movimento</strong><small>Desativa animações visuais</small></span>
+      </button>
+      <button class="accessibility-option" id="highlightButton" type="button" aria-pressed="false">
+        <span class="option-icon"><i data-lucide="text-select"></i></span>
+        <span><strong>Destacar links</strong><small>Realça elementos acionáveis</small></span>
+      </button>
+      <button class="accessibility-option" id="librasButton" type="button" aria-pressed="false">
+        <span class="option-icon"><i data-lucide="languages"></i></span>
+        <span><strong>Ativar Libras</strong><small>Tradução automática com VLibras</small></span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="toast-stack" id="toastStack" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="navigationAnnouncement" class="visually-hidden" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
